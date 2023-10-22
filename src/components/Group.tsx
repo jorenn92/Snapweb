@@ -313,7 +313,6 @@ export default function Group(props: GroupProps) {
   //   );
   // }
   if (clienten.length === 0) return <div>{snackbar()}</div>;
-
   let stream = props.server.getStream(props.group.stream_id);
   let artUrl = stream?.properties.metadata.artUrl || logo;
   let title = stream?.properties.metadata.title || "Unknown Title";
@@ -321,6 +320,8 @@ export default function Group(props: GroupProps) {
     ? stream!.properties.metadata.artist!.join(", ")
     : "Unknown Artist";
   let playing: boolean = stream?.status === "playing";
+
+  console.log(stream);
 
   console.debug("Art URL: " + artUrl);
 
@@ -514,7 +515,7 @@ export default function Group(props: GroupProps) {
           >
             {props.server.streams.map((stream) => (
               <MenuItem key={stream.id} value={stream.id}>
-                {stream.id}
+                {stream.id.charAt(0).toUpperCase() + stream.id.slice(1)}
               </MenuItem>
             ))}
           </TextField>

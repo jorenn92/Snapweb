@@ -1,6 +1,8 @@
 # Snapweb
 
-Web client for [Snapcast](https://github.com/badaix/snapcast), optimized for
+This is an alternate version of the official react branch of SnapWeb, modified to look a bit more modern to my taste.
+
+Snapserver is originally a Web client for [Snapcast](https://github.com/badaix/snapcast), optimized for
 mobile devices, with the look and feel of
 [Snapdroid](https://github.com/badaix/snapdroid)
 

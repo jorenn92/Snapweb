@@ -155,13 +155,8 @@ export default function Client(props: ClientProps) {
     <Box
       sx={{ paddingTop: 0, mx: 1, opacity: props.client.connected ? 1.0 : 0.5 }}
     >
-      <Grid
-        container
-        spacing={2}
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Grid item xs={12} className="force-removed-padding" >
+      <Grid container spacing={2} justifyContent="center" alignItems="center">
+        <Grid item xs={12} className="force-removed-padding" sx={{ flex: 1 }}>
           <Stack spacing={-2} direction="column">
             <Stack spacing={1} direction="row" alignItems="center">
               <Grid container direction="row" justifyContent="space-between">
@@ -173,7 +168,10 @@ export default function Client(props: ClientProps) {
                     alignItems: "center",
                   }}
                 >
-                  <DragIndicatorIcon sx={{ verticalAlign: "middle" }} />
+                  <DragIndicatorIcon
+                    sx={{ verticalAlign: "middle" }}
+                  />
+
                   <Typography variant="subtitle2" align="left">
                     {props.client.config.name === ""
                       ? props.client.host.name
