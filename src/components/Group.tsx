@@ -38,6 +38,7 @@ import {
   SkipPrevious as SkipPreviousIcon,
   SkipNext as SkipNextIcon,
   Settings as SettingsIcon,
+  Padding,
 } from "@mui/icons-material";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
@@ -331,7 +332,8 @@ export default function Group(props: GroupProps) {
     <div>
       <Card
         sx={{
-          p: 4,
+          py: 2,
+          px: 4,
           my: 2,
           flexGrow: 1,
           borderRadius: "15px",
@@ -350,7 +352,7 @@ export default function Group(props: GroupProps) {
             <Stack direction="row" justifyContent="center" alignItems="center">
               <FormControl variant="standard">
                 <Select
-                  sx={{ fontWeight: "bold", fontSize: "1.3em" }}
+                  sx={{ fontWeight: "bold", fontSize: "1.1em" }}
                   id="stream"
                   value={props.group.stream_id}
                   label="Stream"
@@ -384,7 +386,7 @@ export default function Group(props: GroupProps) {
             </IconButton>
           </Grid>
 
-          <Stack spacing={2} paddingY={3} direction="row" alignItems="center">
+          <Stack spacing={2} paddingY={2} direction="row" alignItems="center">
             <CardMedia
               component="img"
               sx={{ width: 48 }}
@@ -441,7 +443,7 @@ export default function Group(props: GroupProps) {
             </Stack>
           )} */}
         </Stack>
-        <Divider sx={{ my: 1 }} />
+        <Divider sx={{ marginTop: 0, marginBottom: 1 }} />
         <Droppable droppableId={`${props.group.id}`}>
           {(provided) => (
             <div ref={provided.innerRef} {...provided.droppableProps}>
@@ -456,10 +458,13 @@ export default function Group(props: GroupProps) {
                       <div
                         ref={provided.innerRef}
                         {...provided.draggableProps}
-                        style={getDragableItemStyle(
-                          snapshot.isDragging,
-                          provided.draggableProps.style
-                        )}
+                        style={{
+                          ...getDragableItemStyle(
+                            snapshot.isDragging,
+                            provided.draggableProps.style
+                          ),
+                          paddingBottom: "0px",
+                        }}
                       >
                         <Client
                           key={item.id}

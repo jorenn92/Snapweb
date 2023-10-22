@@ -7,11 +7,12 @@ export default function AboutDialog(props: { open: boolean, onClose: () => void 
       <Dialog
         open={props.open}
         scroll="paper"
+        fullWidth={true}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
         <DialogTitle id="scroll-dialog-title">About Snapweb</DialogTitle>
-        <DialogContent dividers>
+        <DialogContent>
           <DialogContentText
             id="scroll-dialog-description"
             tabIndex={-1}

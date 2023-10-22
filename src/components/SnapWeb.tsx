@@ -5,6 +5,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { config } from "../config";
 import { SnapControl, Snapcast } from "../snapcontrol";
 import { SnapStream } from "../snapstream";
+import SettingsIcon from "@mui/icons-material/Settings";
+import InfoIcon from "@mui/icons-material/Info";
 import {
   AppBar,
   Box,
@@ -18,11 +20,15 @@ import {
   Toolbar,
   Typography,
   IconButton,
+  BottomNavigation,
+  BottomNavigationAction,
+  Paper,
 } from "@mui/material";
 import {
   PlayArrow as PlayArrowIcon,
   Stop as StopIcon,
   Menu as MenuIcon,
+  SettingsInputAntenna,
 } from "@mui/icons-material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -384,17 +390,6 @@ export default function SnapWeb(props: SnapWebProps) {
         // onKeyDown={toggleDrawer(anchor, false)}
       >
         <List>
-          <ListItem key="about" disablePadding>
-            <ListItemButton
-              onClick={() => {
-                setAboutOpen(true);
-                setSettingsOpen(false);
-              }}
-            >
-              <ListItemText primary="About..." />
-            </ListItemButton>
-          </ListItem>
-
           <ListItem disablePadding>
             <ListItemButton
               role={undefined}
@@ -458,43 +453,8 @@ export default function SnapWeb(props: SnapWebProps) {
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <CssBaseline />
       <div className="SnapWeb">
-        <AppBar position="sticky">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-              onClick={(_) => {
-                setSettingsOpen(true);
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Snapcast
-            </Typography>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-              onClick={(_) => {
-                setIsPlaying(!isPlaying);
-              }}
-            >
-              {isPlaying ? (
-                <StopIcon fontSize="large" />
-              ) : (
-                <PlayArrowIcon fontSize="large" />
-              )}
-            </IconButton>
-          </Toolbar>
-        </AppBar>
         <Drawer
-          anchor="top"
+          anchor="bottom"
           open={settingsOpen} //</div>={state[anchor]}
           onClose={() => {
             setSettingsOpen(false);
@@ -507,6 +467,31 @@ export default function SnapWeb(props: SnapWebProps) {
           snapcontrol={props.snapcontrol}
           showOffline={showOffline}
         />
+        <Paper
+          sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+          elevation={3}
+        >
+          <BottomNavigation
+            showLabels
+          >
+            <BottomNavigationAction
+              onClick={() => setSettingsOpen(true)}
+              label="Settings"
+              icon={<SettingsIcon />}
+            />
+            <BottomNavigationAction
+              onClick={() => setIsPlaying(!isPlaying)}
+              label="Play"
+              icon={isPlaying ? <StopIcon /> : <PlayArrowIcon />}
+            />
+            <BottomNavigationAction
+              label="About"
+              onClick={() => setAboutOpen(true)}
+              icon={<InfoIcon />}
+            />
+          </BottomNavigation>
+        </Paper>
+
         <AboutDialog
           open={aboutOpen}
           onClose={() => {
