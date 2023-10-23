@@ -38,9 +38,9 @@ import {
   SkipPrevious as SkipPreviousIcon,
   SkipNext as SkipNextIcon,
   Settings as SettingsIcon,
-  Padding,
 } from "@mui/icons-material";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { config } from "../config";
 
 type GroupClient = {
   client: Snapcast.Client;
@@ -314,14 +314,12 @@ export default function Group(props: GroupProps) {
   // }
   if (clienten.length === 0) return <div>{snackbar()}</div>;
   let stream = props.server.getStream(props.group.stream_id);
-  let artUrl = stream?.properties.metadata.artUrl || logo;
+  let artUrl = config.baseUrl.replace("ws://", "http://").replace("wss://", "https://") + "/" + stream?.properties.metadata.artUrl?.split("/")[3] || logo; // Hack, otherwise url = hostname which doesn't work on Safari
   let title = stream?.properties.metadata.title || "Unknown Title";
   let artist: string = stream?.properties.metadata.artist
     ? stream!.properties.metadata.artist!.join(", ")
     : "Unknown Artist";
   let playing: boolean = stream?.status === "playing";
-
-  console.log(stream);
 
   console.debug("Art URL: " + artUrl);
 
