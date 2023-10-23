@@ -314,7 +314,11 @@ export default function Group(props: GroupProps) {
   // }
   if (clienten.length === 0) return <div>{snackbar()}</div>;
   let stream = props.server.getStream(props.group.stream_id);
-  let artUrl = config.baseUrl.replace("ws://", "http://").replace("wss://", "https://") + "/" + stream?.properties.metadata.artUrl?.split("/")[3] || logo; // Hack, otherwise url = hostname which doesn't work on Safari
+  let artUrl = stream?.properties.metadata.artUrl
+    ? config.baseUrl.replace("ws://", "http://").replace("wss://", "https://") +
+      "/" +
+      stream?.properties.metadata.artUrl?.split("/")[3]
+    : logo; // Hack, otherwise url = hostname which doesn't work on Safari
   let title = stream?.properties.metadata.title || "Unknown Title";
   let artist: string = stream?.properties.metadata.artist
     ? stream!.properties.metadata.artist!.join(", ")
