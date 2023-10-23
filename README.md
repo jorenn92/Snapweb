@@ -1,8 +1,19 @@
-# Snapweb
+# What is this?
 
-This is an alternate version of the official react branch of SnapWeb, modified to look a bit more modern to my taste.
+This is an alternate version of the official react branch of SnapWeb, modified to look a bit more modern.
 
-Snapserver is originally a Web client for [Snapcast](https://github.com/badaix/snapcast), optimized for
+Changes include: 
+- drag & drop clients between sources
+- bottom navigation
+- Spacing and other UI improvements
+
+This is created for personal use in conjunction with [jorenn92/Snapserver-spotify-airplay](https://github.com/jorenn92/Snapserver-spotify-airplay) to manage multiroom audio in my residence.
+
+You may use this, but i (probably) won't react to bugs / PR's (unless they fix/improve things i also experience)
+
+# Original Snapweb documentation
+
+Snapserver is a Web client for [Snapcast](https://github.com/badaix/snapcast), optimized for
 mobile devices, with the look and feel of
 [Snapdroid](https://github.com/badaix/snapdroid)
 
