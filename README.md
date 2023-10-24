@@ -9,7 +9,7 @@ Changes include:
 
 This is created for personal use in conjunction with [jorenn92/Snapserver-spotify-airplay](https://github.com/jorenn92/Snapserver-spotify-airplay) to manage multiroom audio in my residence.
 
-You may use this, but i (probably) won't react to bugs / PR's (unless they fix/improve things i also experience)
+You may use this, but i (probably) won't react to bugs / PR's (unless they fix/improve things i find useful)
 
 # Original Snapweb documentation
 
